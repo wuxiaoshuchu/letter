@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>写给陈思茹的信</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #ffcccc, #ffe6e6);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .container {
+      text-align: center;
+    }
+    .button {
+      font-size: 2em;
+      padding: 15px 30px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .button:hover {
+      transform: scale(1.1);
+    }
+    .letter {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      padding: 30px;
+      background: #fff0f0;
+      border: 2px solid #ff4d4d;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      animation: fadeIn 1s ease forwards;
+    }
+    .letter h1 {
+      color: #cc0000;
+    }
+    .letter p {
+      font-size: 1.2em;
+      line-height: 2em;
+      color: #333;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8) translate(-50%, -50%); }
+      100% { opacity: 1; transform: scale(1) translate(-50%, -50%); }
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .heart-float {
+      position: absolute;
+      font-size: 2em;
+      color: #ff4d4d;
+      animation: floatUp 2s ease-out forwards;
+    }
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-150px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button class="button" onclick="showLetter()">点我点我 ❤️</button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="letter" id="letter">
+    <h1>亲爱的陈思茹：</h1>
+    <p>
+      谢谢你在这段时间里一直包容我、理解我。<br>
+      有你在身边的每一天，我都觉得无比幸福。<br>
+      无论未来怎样，我都想陪你一起走下去。<br><br>
+      —— 臭臭的小邹
+    </p>
+  </div>
+
+  <script>
+    function showLetter() {
+      document.getElementById('letter').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+      createHeart();
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart-float');
+      heart.innerText = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '80vh';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 2000);
+    }
+  </script>
+</body>
+</html>
